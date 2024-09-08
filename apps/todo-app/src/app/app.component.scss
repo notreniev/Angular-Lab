@@ -1,0 +1,15 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 1rem;
+}
+
+aside {
+  flex: 2;
+}
+
+main {
+  padding: 1rem 0 0 1rem;
+  flex: 4;
+}

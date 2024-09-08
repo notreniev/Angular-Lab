@@ -1,0 +1,25 @@
+ul,
+ol {
+  margin: 1rem auto auto 0rem;
+  padding: unset;
+}
+
+li {
+  padding: 1rem;
+  border: solid 1px;
+  list-style: none;
+}
+
+.active-link {
+  padding-right: 0.5rem;
+  border-right: solid 0.5rem red;
+}
+
+.active-link-green {
+  padding-right: 0.5rem;
+  border-right: solid 0.5rem green;
+}
+
+a {
+  cursor: pointer;
+}

@@ -1,0 +1,7 @@
+<ul>
+  <li *ngFor="let link of links">
+    <a [routerLink]="link.path" routerLinkActive="active-link-green">
+      {{ link.path }}
+    </a>
+  </li>
+</ul>

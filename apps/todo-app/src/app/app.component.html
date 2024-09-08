@@ -1,0 +1,15 @@
+<div class="main-container">
+  <h1>{{ title }} is running!</h1>
+  <app-breadcrumb />
+
+  <div style="display: flex">
+    <div style="flex: 1">
+      <aside>
+        <app-sidebar />
+      </aside>
+    </div>
+    <main>
+      <router-outlet />
+    </main>
+  </div>
+</div>
