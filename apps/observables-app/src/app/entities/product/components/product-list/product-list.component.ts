@@ -19,7 +19,7 @@ export class ProductListComponent {
   constructor(protected productService: ProductService) {}
 
   public products$ = this.productService.products$.pipe(
-    catchError((err) => {
+    catchError(err => {
       this.errorMessage$Subject.next(err);
       return EMPTY;
     })
@@ -29,7 +29,7 @@ export class ProductListComponent {
 
   public vm$ = combineLatest([this.products$, this.selectedProduct$]).pipe(
     map(([products, selectedProduct]) => ({ products, selectedProduct })),
-    catchError((err) => {
+    catchError(err => {
       this.errorMessage$Subject.next(err);
       return EMPTY;
     })

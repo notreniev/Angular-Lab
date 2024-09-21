@@ -24,7 +24,7 @@ export class ProductService {
   constructor(protected http: HttpClient) {}
 
   products$ = this.http.get<Product[]>(this.productsUrl).pipe(
-    tap((data) => console.log('Products: ', JSON.stringify(data))),
+    tap(data => console.log('Products: ', JSON.stringify(data))),
     catchError(this.handleError)
   );
 
@@ -33,9 +33,9 @@ export class ProductService {
     this.productSelectedAction$,
   ]).pipe(
     map(([products, selectedProductId]) =>
-      products.find((product) => product.id === selectedProductId)
+      products.find(product => product.id === selectedProductId)
     ),
-    tap((product) => console.log('Selected product id: ', product)),
+    tap(product => console.log('Selected product id: ', product)),
     shareReplay(1)
   );
 

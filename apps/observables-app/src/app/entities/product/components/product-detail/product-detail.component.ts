@@ -24,7 +24,7 @@ export class ProductDetailComponent {
   constructor(protected productService: ProductService) {}
 
   public product$ = this.productService.productSelected$.pipe(
-    filter((product) => Boolean(product)),
-    map((product) => product)
+    filter(product => Boolean(product)),
+    map(product => product)
   );
 }

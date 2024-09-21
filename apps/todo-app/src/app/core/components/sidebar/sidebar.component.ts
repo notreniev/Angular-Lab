@@ -1,6 +1,6 @@
-import { Component } from '@angular/core'
-import { CommonModule } from '@angular/common'
-import { RouterLink, RouterLinkActive } from '@angular/router'
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -17,5 +17,5 @@ export class SidebarComponent {
     { path: 'feature1/feature2a' },
     { path: 'feature3' },
     { path: 'feature4' },
-  ]
+  ];
 }

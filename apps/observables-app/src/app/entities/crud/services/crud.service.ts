@@ -27,7 +27,7 @@ export class CrudService {
   items$ = combineLatest([this.getList(), this.itemActionSelected$]).pipe(
     map(([items, itemActionSubject]) => {
       if (itemActionSubject.action === 'READ') {
-        const foundRead = items.find((i) => i.id === itemActionSubject.value);
+        const foundRead = items.find(i => i.id === itemActionSubject.value);
         if (foundRead) {
           foundRead.read = true;
         }
@@ -35,7 +35,7 @@ export class CrudService {
 
       if (itemActionSubject.action === 'DELETE') {
         const foundDeleted = items.findIndex(
-          (i) => i.id === itemActionSubject.value
+          i => i.id === itemActionSubject.value
         );
         if (foundDeleted > -1) {
           items.splice(foundDeleted, 1);
@@ -56,8 +56,8 @@ export class CrudService {
 
   getTotalUnreads(): Observable<number> {
     return this.items$.pipe(
-      map((response) => response.filter((res) => !res.read).length),
-      tap((response) => console.log('counting: ', response))
+      map(response => response.filter(res => !res.read).length),
+      tap(response => console.log('counting: ', response))
     );
   }
 }

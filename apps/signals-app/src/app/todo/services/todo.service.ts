@@ -25,7 +25,7 @@ export class TodoService {
     const posts = this.postsResults();
 
     if (search) {
-      return posts?.filter((post) => post.title.includes(search));
+      return posts?.filter(post => post.title.includes(search));
     } else {
       return posts;
     }

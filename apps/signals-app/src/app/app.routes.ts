@@ -9,23 +9,23 @@ export const routes: Routes = [
   {
     path: 'list',
     loadComponent: () =>
-      import('../app/todo/list/list.component').then((m) => m.ListComponent),
+      import('../app/todo/list/list.component').then(m => m.ListComponent),
   },
   {
     path: 'add',
     loadComponent: () =>
-      import('../app/todo/add/add.component').then((m) => m.AddComponent),
+      import('../app/todo/add/add.component').then(m => m.AddComponent),
   },
   {
     path: 'edit',
     loadComponent: () =>
-      import('../app/todo/edit/edit.component').then((m) => m.EditComponent),
+      import('../app/todo/edit/edit.component').then(m => m.EditComponent),
   },
   {
     path: 'delete',
     loadComponent: () =>
       import('../app/todo/delete/delete.component').then(
-        (m) => m.DeleteComponent
+        m => m.DeleteComponent
       ),
   },
 ];

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-feature1a',
@@ -9,6 +9,6 @@ import { Component } from '@angular/core'
 })
 export class Feature1aComponent {
   constructor() {
-    console.log('Feature1aComponent')
+    console.log('Feature1aComponent');
   }
 }

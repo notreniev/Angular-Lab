@@ -7,8 +7,7 @@
     <li *ngFor="let item of list">
       {{ item.name }} - {{ item.read }}
       <a (click)="markAsRead(item)"> Mark as read</a>-<a
-        (click)="markAsDeleted(item)"
-      >
+        (click)="markAsDeleted(item)">
         Delete</a
       >
     </li>

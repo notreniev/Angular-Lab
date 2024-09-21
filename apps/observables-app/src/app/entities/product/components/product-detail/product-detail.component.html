@@ -2,8 +2,7 @@
 
 <div
   class="product-detail"
-  *ngIf="product$ | async as product; else noneSelected"
->
+  *ngIf="product$ | async as product; else noneSelected">
   <ng-container *ngIf="product">
     <table aria-describedby="Product Table">
       <thead>
@@ -25,7 +24,7 @@
         </tr>
         <tr>
           <td>Price:</td>
-          <td>{{ product.price | currency : "EUR" }}</td>
+          <td>{{ product.price | currency : 'EUR' }}</td>
         </tr>
         <tr>
           <td>Quantity in stock:</td>

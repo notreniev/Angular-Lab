@@ -1,21 +1,21 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Feature2Component } from './feature2.component'
+import { Feature2Component } from './feature2.component';
 
 describe('Feature2Component', () => {
-  let component: Feature2Component
-  let fixture: ComponentFixture<Feature2Component>
+  let component: Feature2Component;
+  let fixture: ComponentFixture<Feature2Component>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [Feature2Component],
-    })
-    fixture = TestBed.createComponent(Feature2Component)
-    component = fixture.componentInstance
-    fixture.detectChanges()
-  })
+    });
+    fixture = TestBed.createComponent(Feature2Component);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
   it('should create', () => {
-    expect(component).toBeTruthy()
-  })
-})
+    expect(component).toBeTruthy();
+  });
+});

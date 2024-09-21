@@ -1,8 +1,8 @@
-import { Component, computed, inject } from '@angular/core'
-import { CommonModule, TitleCasePipe } from '@angular/common'
-import { RouterLink } from '@angular/router'
-import { BreadcrumbService } from './services/breadcrumb.service'
-import { IxModule } from '@siemens/ix-angular'
+import { Component, computed, inject } from '@angular/core';
+import { CommonModule, TitleCasePipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
+import { BreadcrumbService } from './services/breadcrumb.service';
+import { IxModule } from '@siemens/ix-angular';
 
 @Component({
   selector: 'app-breadcrumb',
@@ -12,11 +12,11 @@ import { IxModule } from '@siemens/ix-angular'
   styleUrl: './breadcrumb.component.scss',
 })
 export class BreadcrumbComponent {
-  protected readonly breadcrumbsService = inject(BreadcrumbService)
+  protected readonly breadcrumbsService = inject(BreadcrumbService);
 
-  breadcrumbs = computed(() => this.breadcrumbsService.breadcrumbsSignal())
+  breadcrumbs = computed(() => this.breadcrumbsService.breadcrumbsSignal());
 
   constructor() {
-    console.log('breadcrumbs signal:', this.breadcrumbs())
+    console.log('breadcrumbs signal:', this.breadcrumbs());
   }
 }
