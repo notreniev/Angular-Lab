@@ -14,13 +14,9 @@ import { Pagination } from '../models/pagination.model';
 })
 export class ListComponent {
   private todoService = inject(TodoService);
-  private pagination: Pagination = { start: 1, limit: 10 };
+  private pagination: Pagination = { start: 0, limit: 10 };
 
-  public state = {
-    filter: this.todoService.filter,
-    posts: this.todoService.filteredPosts,
-    currentPagination: this.todoService.currentPagination,
-  };
+  public posts = this.todoService.filteredPosts;
 
   onPageSelected(event: Event) {
     const currentPage = (event as CustomEvent).detail;

@@ -20,7 +20,7 @@ export class TodoService {
     posts: [],
     filter: null,
     status: 'loading',
-    currentPagination: { start: 1, limit: 10 },
+    currentPagination: { start: 0, limit: 10 },
   });
 
   public filterControl = new FormControl();
@@ -45,8 +45,8 @@ export class TodoService {
   filter$ = this.filterControl.valueChanges;
   currentPagination$ = new Subject<Pagination>();
 
-  private getPostsByPage = this.currentPagination$.pipe(
-    startWith({ start: 1, limit: 10 }),
+  private getPostsByPage$ = this.currentPagination$.pipe(
+    startWith(this.state().currentPagination),
     switchMap(({ start, limit }: Pagination) =>
       this.http.get<Post[]>(`${baseApi}/posts?_start=${start}&_limit=${limit}`)
     )
@@ -54,7 +54,7 @@ export class TodoService {
 
   constructor() {
     // reducers
-    this.getPostsByPage.pipe(takeUntilDestroyed()).subscribe(posts =>
+    this.getPostsByPage$.pipe(takeUntilDestroyed()).subscribe(posts =>
       this.state.update(state => ({
         ...state,
         posts,
