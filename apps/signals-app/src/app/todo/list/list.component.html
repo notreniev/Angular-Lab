@@ -1,18 +1,23 @@
 <ng-container *ngIf="$posts() as posts">
-  @for(post of posts; track $index) {
-  <ix-card variant="insight">
-    <ix-card-content>
-      <ix-icon name="capacity"></ix-icon>
-      <ix-typography bold>{{ post.title }}</ix-typography>
-      <ix-typography> {{ post.body }} </ix-typography>
-      <ix-typography format="h1">{{ post.id }}</ix-typography>
-    </ix-card-content>
-  </ix-card>
-  }
-  <ix-pagination
-    advanced
-    showItemCount
-    [count]="posts.length"
-    itemCount="10"
-    (pageSelected)="onPageSelected($event)" />
+  <div class="card-container">
+    @for(post of posts; track $index) {
+    <ix-card variant="insight">
+      <ix-card-content>
+        <ix-icon name="capacity"></ix-icon>
+        <ix-typography bold>{{ post.title }}</ix-typography>
+        <ix-typography> {{ post.body }} </ix-typography>
+        <ix-typography format="h1">{{ post.id }}</ix-typography>
+      </ix-card-content>
+    </ix-card>
+    }
+    <div class="pagination-container">
+      <ix-pagination
+        advanced
+        showItemCount
+        [count]="posts.length"
+        itemCount="10"
+        (pageSelected)="onPageSelected($event)"
+        (itemCountChanged)="onPageSizeChange($event)" />
+    </div>
+  </div>
 </ng-container>

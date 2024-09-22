@@ -22,4 +22,10 @@ export class ListComponent {
     this.pagination = { ...this.pagination, start: currentPage };
     this.todoService.setPagination(this.pagination);
   }
+
+  onPageSizeChange(event: Event) {
+    const pageSize = (event as CustomEvent).detail;
+    this.pagination = { ...this.pagination, limit: pageSize };
+    this.todoService.setPagination(this.pagination);
+  }
 }
