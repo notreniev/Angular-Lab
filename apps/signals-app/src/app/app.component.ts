@@ -16,6 +16,6 @@ export class AppComponent {
   todoService = inject(TodoService);
 
   onClick(value: string) {
-    this.todoService.searchPost(value);
+    this.todoService.filterControl.setValue(value);
   }
 }

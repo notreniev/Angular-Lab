@@ -1,4 +1,4 @@
-<ng-container *ngIf="$posts() as posts">
+<ng-container *ngIf="state.posts() as posts">
   <div class="card-container">
     @for(post of posts; track $index) {
     <ix-card variant="insight">

@@ -14,18 +14,23 @@ import { Pagination } from '../models/pagination.model';
 })
 export class ListComponent {
   private todoService = inject(TodoService);
-  private pagination: Pagination = { start: 0, limit: 10 };
-  public $posts = this.todoService.posts;
+  private pagination: Pagination = { start: 1, limit: 10 };
+
+  public state = {
+    filter: this.todoService.filter,
+    posts: this.todoService.filteredPosts,
+    currentPagination: this.todoService.currentPagination,
+  };
 
   onPageSelected(event: Event) {
     const currentPage = (event as CustomEvent).detail;
-    this.pagination = { ...this.pagination, start: currentPage };
-    this.todoService.setPagination(this.pagination);
+    const pagination = { ...this.pagination, start: currentPage };
+    this.todoService.currentPagination$.next(pagination);
   }
 
   onPageSizeChange(event: Event) {
     const pageSize = (event as CustomEvent).detail;
-    this.pagination = { ...this.pagination, limit: pageSize };
-    this.todoService.setPagination(this.pagination);
+    const pagination = { ...this.pagination, limit: pageSize };
+    this.todoService.currentPagination$.next(pagination);
   }
 }
