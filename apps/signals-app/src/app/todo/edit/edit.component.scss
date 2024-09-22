@@ -3,5 +3,9 @@
     display: flex;
     justify-content: flex-end;
     padding: 0 0.5rem;
+
+    ix-button {
+      padding: 0 0.25rem;
+    }
   }
 }

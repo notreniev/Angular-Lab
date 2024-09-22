@@ -5,5 +5,5 @@ export interface PostsState {
   post: Post;
   filter: string | null;
   status: 'loading' | 'success' | 'error';
-  currentPagination: { start: number; limit: number };
+  pagination: { start: number; limit: number };
 }
