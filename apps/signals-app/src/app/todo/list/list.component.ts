@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-
-import { TodoService } from './../services/todo.service';
-import { IxModule } from '@siemens/ix-angular';
-import { Pagination } from '../models/pagination.model';
 import { RouterLink } from '@angular/router';
+import { IxModule } from '@siemens/ix-angular';
+
+import { Pagination } from '../models/pagination.model';
+import { TodoService } from './../services/todo.service';
 
 @Component({
   selector: 'app-list',

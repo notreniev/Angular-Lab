@@ -4,6 +4,7 @@ export interface PostsState {
   posts: Post[];
   post: Post;
   filter: string | null;
+  error: string | null;
   status: 'loading' | 'success' | 'error';
   pagination: { start: number; limit: number };
 }

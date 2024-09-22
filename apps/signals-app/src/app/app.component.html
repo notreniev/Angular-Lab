@@ -2,12 +2,22 @@
   <ix-application-header name="My Application">
     <div class="placeholder-logo" slot="logo"></div>
 
-    <input
-      #search
-      type="text"
-      placeholder="Search"
-      (keyup.enter)="onClick(search.value)"
-      (keyup.esc)="onClick((search.value = ''))" />
+    <ix-input-group>
+      <span slot="input-start">
+        <ix-icon name="search" size="16" />
+      </span>
+      <span slot="input-end" *ngIf="search.value">
+        <ix-icon-button icon="close" size="16" (click)="filter.setValue('')" />
+      </span>
+
+      <input
+        #search
+        placeholder="Search"
+        type="text"
+        size="50"
+        [formControl]="filter"
+        (keyup.esc)="filter.setValue('')" />
+    </ix-input-group>
   </ix-application-header>
   <ix-menu>
     <ix-menu-item>Item 1</ix-menu-item>
@@ -16,6 +26,12 @@
 
   <ix-content>
     <ix-content-header slot="header" header-title="My Content Page" />
+    <div class="status">
+      <p *ngIf="status() === 'loading'">Loading...</p>
+      <div *ngIf="status() === 'error'">
+        <p>Error: {{ error() }}</p>
+      </div>
+    </div>
     <router-outlet />
   </ix-content>
 </ix-application>
