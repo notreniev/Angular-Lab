@@ -18,6 +18,7 @@ export class TodoService {
 
   private state = signal<PostsState>({
     posts: [],
+    post: {} as Post,
     filter: null,
     status: 'loading',
     currentPagination: { start: 0, limit: 10 },
@@ -27,6 +28,7 @@ export class TodoService {
 
   // selectors
   posts = computed(() => this.state().posts);
+  post = computed(() => this.state().post);
   filter = computed(() => this.state().filter);
   status = computed(() => this.state().status);
   currentPagination = computed(() => this.state().currentPagination);
@@ -43,6 +45,7 @@ export class TodoService {
 
   // sources
   filter$ = this.filterControl.valueChanges;
+  currentId$ = new Subject<string>();
   currentPagination$ = new Subject<Pagination>();
 
   private getPostsByPage$ = this.currentPagination$.pipe(
@@ -52,12 +55,24 @@ export class TodoService {
     )
   );
 
+  private getPost$ = this.currentId$.pipe(
+    switchMap(id => this.http.get<Post>(`${baseApi}/posts/${id}`))
+  );
+
   constructor() {
     // reducers
     this.getPostsByPage$.pipe(takeUntilDestroyed()).subscribe(posts =>
       this.state.update(state => ({
         ...state,
         posts,
+        status: 'success',
+      }))
+    );
+
+    this.getPost$.pipe(takeUntilDestroyed()).subscribe(post =>
+      this.state.update(state => ({
+        ...state,
+        post,
         status: 'success',
       }))
     );

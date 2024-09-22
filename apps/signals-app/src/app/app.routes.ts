@@ -17,7 +17,7 @@ export const routes: Routes = [
       import('../app/todo/add/add.component').then(m => m.AddComponent),
   },
   {
-    path: 'edit',
+    path: 'edit/:id',
     loadComponent: () =>
       import('../app/todo/edit/edit.component').then(m => m.EditComponent),
   },

@@ -1,1 +1,22 @@
-<p>edit works!</p>
+<ng-container *ngIf="post() as post">
+  <ix-typography format="h4">Edit post {{ post.id }}!</ix-typography>
+  <form class="needs-validation m-2">
+    <ix-input-group style="margin-bottom: 0.5rem">
+      <label for="title">Title</label>
+      <input
+        id="title"
+        name="title"
+        placeholder="Enter text"
+        type="text"
+        [value]="post.title" />
+    </ix-input-group>
+
+    <label for="body">Body</label>
+    <textarea id="body" name="name" rows="40" cols="50">
+      {{ post.body }}
+    </textarea>
+  </form>
+  <div class="actions">
+    <ix-button (click)="save(post)">Save</ix-button>
+  </div>
+</ng-container>
