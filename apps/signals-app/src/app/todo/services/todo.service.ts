@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { computed, inject, Injectable, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl } from '@angular/forms';
-import { of, retry, startWith, Subject, switchMap } from 'rxjs';
+import { map, of, retry, startWith, Subject, switchMap } from 'rxjs';
 
 import { Pagination } from '../models/pagination.model';
 import { Post } from '../models/post.model';
@@ -65,7 +65,8 @@ export class TodoService {
   );
 
   private getPost$ = this.currentId$.pipe(
-    switchMap(id => this.http.get<Post>(`${baseApi}/posts/${id}`))
+    switchMap(id => this.http.get<Post>(`${baseApi}/posts/${id}`)),
+    map(post => ({ ...post, body: post.body.replace('\n', '') }))
   );
 
   constructor() {
