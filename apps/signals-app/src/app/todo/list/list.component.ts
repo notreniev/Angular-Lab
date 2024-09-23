@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { IxModule } from '@siemens/ix-angular';
 
@@ -15,19 +15,27 @@ import { TodoService } from './../services/todo.service';
 })
 export class ListComponent {
   private todoService = inject(TodoService);
-  private pagination: Pagination = { start: 0, limit: 10 };
+  private pagination = signal<Pagination>({ start: 0, limit: 10 });
 
   public posts = this.todoService.filteredPosts;
 
   onPageSelected(event: Event) {
     const currentPage = (event as CustomEvent).detail;
-    const pagination = { ...this.pagination, start: currentPage };
-    this.todoService.pagination$.next(pagination);
+    const page = { ...this.pagination(), start: currentPage };
+    this.pagination.update(currentPagination => ({
+      ...currentPagination,
+      page,
+    }));
+    this.todoService.pagination$.next(this.pagination());
   }
 
   onPageSizeChange(event: Event) {
     const pageSize = (event as CustomEvent).detail;
-    const pagination = { ...this.pagination, limit: pageSize };
-    this.todoService.pagination$.next(pagination);
+    const page = { ...this.pagination(), limit: pageSize };
+    this.pagination.update(currentPagination => ({
+      ...currentPagination,
+      page,
+    }));
+    this.todoService.pagination$.next(this.pagination());
   }
 }
